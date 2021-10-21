@@ -11,8 +11,10 @@ def test_sample_transform(spark_session):
             ('hobbit', 'Billbo', 20),
             ('wizard', 'Gandalf', 1000)
         ],
-        ['that_column', 'another_column', 'yet_another']
+        ['race', 'name', 'coins']
     )
+    
     new_df = sample_transform(test_df)
+
     assert new_df.count() == 1
-    assert new_df.toPandas().to_dict('list')['new_column'][0] == 70
+    assert new_df.toPandas().to_dict('list')['total_coins'][0] == 70
